@@ -1,0 +1,19 @@
+[ndb_mgmd]
+hostname=domU-12-31-39-04-D6-A3.compute-1.internal
+datadir=/opt/mysqlcluster/deploy/ndb_data
+nodeid=1
+
+[ndbd default]
+noofreplicas=2
+datadir=/opt/mysqlcluster/deploy/ndb_data
+
+[ndbd]
+hostname=ip-10-72-50-247.ec2.internal
+nodeid=3
+
+[ndbd]
+hostname=ip-10-194-139-246.ec2.internal
+nodeid=4
+
+[mysqld]
+nodeid=50
