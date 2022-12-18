@@ -20,6 +20,7 @@ for instance in instances :
     create_instance(instance,securityGroupId,key_name)
 
 """
+
 key_name = 'key' 
 
 instances= ['mysql_standalone','mysql_cluster_master','mysql_cluster_slave1','mysql_cluster_slave2','mysql_cluster_slave3']
@@ -31,8 +32,10 @@ for instance in instances :
     publicIp = retrieve_publicIp(instanceId)
     sessions[instance] = ssh_to_instance(key_name+'.pem',publicIp)
 
-sessions['mysql_standalone'].exec_command("sudo apt-get update; sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git")
+# sessions['mysql_standalone'].exec_command("sudo apt-get update")
+# stdin, stdout, stderr = sessions['mysql_standalone'].exec_command("sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git")
 
 
-
-
+#stdin, stdout, stderr = sessions['mysql_standalone'].exec_command("sudo bash ~/LOG8415_FinalProject/Standalone_setup/Mysql_installation.sh")
+#print('stdout:', stdout.read())
+#print('stderr:', stderr.read())
