@@ -33,7 +33,7 @@ for instance in instances :
     sessions[instance] = ssh_to_instance(key_name+'.pem',publicIp)
 
 # sessions['mysql_standalone'].exec_command("sudo apt-get update")
-# sessions['mysql_standalone'].exec_command("sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git")
+sessions['mysql_standalone'].exec_command("sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git")
 
 stdin, stdout, stderr = sessions['mysql_standalone'].exec_command("cd /home/ubuntu/LOG8415_FinalProject/Standalone_setup; sudo bash ./test.sh ")
 print('stdout:', stdout.read())
