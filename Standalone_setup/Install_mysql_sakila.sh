@@ -1,11 +1,9 @@
 #! /usr/bin/bash
 
-cd
 # install mysql
 sudo apt-get install mysql-server -y
-# sudo mysql
+sudo apt-get install sysbench -y
 
 # install sakila
-cp ~/LOG8415_FinalProject/sakila-db.tar.gz ~/
-cd
-sudo tar xvf ~/sakila-db.tar.gz
+cp /home/ubuntu/LOG8415_FinalProject/sakila-db.tar.gz /home/ubuntu/
+sudo tar xvf /home/ubuntu/sakila-db.tar.gz

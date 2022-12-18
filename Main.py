@@ -32,11 +32,11 @@ for instance in instances :
     publicIp = retrieve_publicIp(instanceId)
     sessions[instance] = ssh_to_instance(key_name+'.pem',publicIp)
 
-#sessions['mysql_standalone'].exec_command("sudo apt-get update")
-#sessions['mysql_standalone'].exec_command("sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git")
+sessions['mysql_standalone'].exec_command("sudo apt-get update")
+stdin, stdout, stderr =sessions['mysql_standalone'].exec_command("sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git && sudo bash /home/ubuntu/LOG8415_FinalProject/Standalone_setup/Install_mysql_sakila.sh")
 
 #stdin, stdout, stderr = sessions['mysql_standalone'].exec_command("cd /home/ubuntu/LOG8415_FinalProject/Standalone_setup; sudo bash ./test.sh ")
-stdin, stdout, stderr = sessions['mysql_standalone'].exec_command("sudo bash /home/ubuntu/LOG8415_FinalProject/Standalone_setup/test.sh ")
+#stdin, stdout, stderr = sessions['mysql_standalone'].exec_command("sudo bash /home/ubuntu/LOG8415_FinalProject/Standalone_setup/test.sh ")
 
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
