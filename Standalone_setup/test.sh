@@ -4,4 +4,5 @@ sudo apt-get install mysql-server -y
 
 # install sakila
 cp ~/LOG8415_FinalProject/sakila-db.tar.gz ~/
-tar xvf sakila-db.tar.gz
+cd
+sudo tar xvf ~/sakila-db.tar.gz
