@@ -18,7 +18,7 @@ instances= ['mysql_standalone','mysql_cluster_master','mysql_cluster_slave1','my
 
 for instance in instances :
     create_instance(instance,securityGroupId,key_name)
-
+'''
 # start ssh seessions
 instances= ['mysql_standalone','mysql_cluster_master','mysql_cluster_slave1','mysql_cluster_slave2','mysql_cluster_slave3']
 
@@ -45,7 +45,9 @@ print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 
 # setup slaves node
-sessions['mysql_cluster_slave3'].exec_command("sudo apt-get update")
-stdin, stdout, stderr =sessions['mysql_cluster_slave3'].exec_command("sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git && sudo bash /home/ubuntu/LOG8415_FinalProject/Cluster_setup/Common_steps.sh && sudo bash /home/ubuntu/LOG8415_FinalProject/Cluster_setup/Slave_setup.sh")
-print('stdout:', stdout.read())
-print('stderr:', stderr.read())
+for instance in instances[2:]:
+    sessions[instance].exec_command("sudo apt-get update")
+    stdin, stdout, stderr =sessions[instance].exec_command("sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git && sudo bash /home/ubuntu/LOG8415_FinalProject/Cluster_setup/Common_steps.sh && sudo bash /home/ubuntu/LOG8415_FinalProject/Cluster_setup/Slave_setup.sh")
+    print('stdout:', stdout.read())
+    print('stderr:', stderr.read())
+'''
