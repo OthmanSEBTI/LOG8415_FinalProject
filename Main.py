@@ -5,20 +5,24 @@ from Security_group import *
 from Instance import *
 from Instance_connect import *
 
-
+'''
 # create a key  
 key_name = 'key' 
 key_pair(key_name)
 
 # create a security group
-securityGroupId = security_group('security_Group')
+securityGroupId = security_group('security_group')
 
 # create needed instances of type t2.micro
 instances= ['mysql_standalone','mysql_cluster_master','mysql_cluster_slave1','mysql_cluster_slave2','mysql_cluster_slave3']
 
 for instance in instances :
     create_instance(instance,securityGroupId,key_name)
+
 '''
+key_name = 'key' 
+securityGroupId = 'sg-0bb0a3a717861843f'
+
 # start ssh seessions
 instances= ['mysql_standalone','mysql_cluster_master','mysql_cluster_slave1','mysql_cluster_slave2','mysql_cluster_slave3']
 
@@ -50,4 +54,3 @@ for instance in instances[2:]:
     stdin, stdout, stderr =sessions[instance].exec_command("sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git && sudo bash /home/ubuntu/LOG8415_FinalProject/Cluster_setup/Common_steps.sh && sudo bash /home/ubuntu/LOG8415_FinalProject/Cluster_setup/Slave_setup.sh")
     print('stdout:', stdout.read())
     print('stderr:', stderr.read())
-'''
