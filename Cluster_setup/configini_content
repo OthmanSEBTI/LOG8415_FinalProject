@@ -1,25 +1,24 @@
 [ndb_mgmd]
-hostname=ip-172-31-88-140.ec2.internal
+hostname=ip-172-31-87-101.ec2.internal
 datadir=/opt/mysqlcluster/deploy/ndb_data
 nodeid=1
 
 [ndbd default]
 noofreplicas=3
-ServerPort=2202
 datadir=/opt/mysqlcluster/deploy/ndb_data
 
 [ndbd]
-hostname=ip-172-31-94-100.ec2.internal
+hostname=ip-172-31-95-218.ec2.internal
 datadir=/opt/mysqlcluster/deploy/ndb_data
 nodeid=3
 
 [ndbd]
-hostname=ip-172-31-87-12.ec2.internal
+hostname=ip-172-31-85-41.ec2.internal
 datadir=/opt/mysqlcluster/deploy/ndb_data
 nodeid=4
 
 [ndbd]
-hostname=ip-172-31-92-223.ec2.internal
+hostname=ip-172-31-91-87.ec2.internal
 datadir=/opt/mysqlcluster/deploy/ndb_data
 nodeid=5
 
