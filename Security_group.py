@@ -17,6 +17,10 @@ def security_group(securityGroupName):
                 GroupId=security_group_id,
                 IpPermissions=[
                 {'IpProtocol': 'tcp',
+                'FromPort': 30000,
+                'ToPort': 65535,
+                'IpRanges': [{'CidrIp': '0.0.0.0/0'}]},
+                {'IpProtocol': 'tcp',
                 'FromPort': 0,
                 'ToPort': 1186,
                 'IpRanges': [{'CidrIp': '0.0.0.0/0'}]},
@@ -29,6 +33,10 @@ def security_group(securityGroupName):
         data = ec2_client.authorize_security_group_egress(
                 GroupId=security_group_id,
                 IpPermissions=[
+                {'IpProtocol': 'tcp',
+                'FromPort': 30000,
+                'ToPort': 65535,
+                'IpRanges': [{'CidrIp': '0.0.0.0/0'}]},
                 {'IpProtocol': 'tcp',
                 'FromPort': 0,
                 'ToPort': 1186,

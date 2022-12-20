@@ -9,6 +9,8 @@ from Instance_connect import *
 # create a key  
 key_name = 'key' 
 key_pair(key_name)
+'''
+key_name = 'key' 
 
 # create a security group
 securityGroupId = security_group('security_group')
@@ -28,3 +30,5 @@ for instance in instances :
     instanceId = retrieve_intanceId(instance)
     publicIp = retrieve_publicIp(instanceId)
     sessions[instance] = ssh_to_instance(key_name+'.pem',publicIp)
+
+'''
