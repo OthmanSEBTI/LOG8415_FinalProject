@@ -6,7 +6,9 @@ from Instance import *
 from Instance_connect import *
 from Infrastructure_setup import sessions
 
+instances= ['mysql_standalone','mysql_cluster_master','mysql_cluster_slave1','mysql_cluster_slave2','mysql_cluster_slave3']
 
+'''
 # setup mysql standalone instance
 sessions['mysql_standalone'].exec_command("sudo apt-get update")
 stdin, stdout, stderr =sessions['mysql_standalone'].exec_command("sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git && sudo bash /home/ubuntu/LOG8415_FinalProject/Standalone_setup/Install_mysql_sakila.sh && sudo mysql < /home/ubuntu/LOG8415_FinalProject/Standalone_setup/Sakila_setup.sql")
@@ -22,8 +24,8 @@ print('stderr:', stderr.read())
 
 '''
 # setup mysql master node
-sessions['mysql_cluster_masterb'].exec_command("sudo apt-get update")
-stdin, stdout, stderr =sessions['mysql_cluster_masterb'].exec_command("sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git && sudo bash /home/ubuntu/LOG8415_FinalProject/Cluster_setup/Common_steps.sh && sudo bash /home/ubuntu/LOG8415_FinalProject/Cluster_setup/Master_setup.sh")
+sessions['mysql_cluster_master'].exec_command("sudo apt-get update")
+stdin, stdout, stderr =sessions['mysql_cluster_master'].exec_command("sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git && sudo bash /home/ubuntu/LOG8415_FinalProject/Cluster_setup/Common_steps.sh && sudo bash /home/ubuntu/LOG8415_FinalProject/Cluster_setup/Master_setup.sh")
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 
@@ -34,4 +36,3 @@ for instance in instances[2:]:
     print('stdout:', stdout.read())
     print('stderr:', stderr.read())
 
-'''
