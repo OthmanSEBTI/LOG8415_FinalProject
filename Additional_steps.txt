@@ -1,0 +1,19 @@
+cd /opt/mysqlcluster/home/mysqlc
+sudo scripts/mysql_install_db --no-defaults --datadir=/opt/mysqlcluster/deploy/mysqld_data
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysqld --defaults-file=/opt/mysqlcluster/deploy/conf/my.cnf --user=root &
+/opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
+/opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root -p
+CREATE USER 'myapp'@'%' IDENTIFIED BY 'testpwd';
+GRANT ALL PRIVILEGES ON * . * TO 'myapp'@'%' IDENTIFIED BY 'testpwd';
+sudo apt-get install sysbench -y
+cp /home/ubuntu/LOG8415_FinalProject/sakila-db.tar.gz /home/ubuntu/
+sudo tar xvf /home/ubuntu/sakila-db.tar.gz
+
+/opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root -p
+SOURCE /home/ubuntu/sakila-db/sakila-schema.sql;
+SOURCE /home/ubuntu/sakila-db/sakila-data.sql;
+
+sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=127.0.0.1 --mysql-user=root --mysql-db=sakila --table-size=1000000 --max-requests=1000000  prepare
+sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=127.0.0.1 --mysql-user=root --mysql-db=sakila --table-size=1000000 --max-requests=1000000  run
+
+sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h ec2-18-234-103-147.compute-1.amazonaws.com -u myapp -p

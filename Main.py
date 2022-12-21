@@ -23,6 +23,7 @@ print('stderr:', stderr.read())
 # stdin, stdout, stderr =sessions['mysql_standalone1'].exec_command("sudo sysbench oltp_read_write --table-size=1000000 --mysql-db=sakila --mysql-user=root prepare && sudo sysbench oltp_read_write --table-size=1000000 --threads=6 --time=60 --max-requests=0 --mysql-db=sakila --mysql-user=root run")
 
 '''
+'''
 # setup mysql master node
 sessions['mysql_cluster_master'].exec_command("sudo apt-get update")
 stdin, stdout, stderr =sessions['mysql_cluster_master'].exec_command("sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git && sudo bash /home/ubuntu/LOG8415_FinalProject/Cluster_setup/Common_steps.sh && sudo bash /home/ubuntu/LOG8415_FinalProject/Cluster_setup/Master_setup.sh")
@@ -33,6 +34,14 @@ print('stderr:', stderr.read())
 for instance in instances[2:]:
     sessions[instance].exec_command("sudo apt-get update")
     stdin, stdout, stderr =sessions[instance].exec_command("sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git && sudo bash /home/ubuntu/LOG8415_FinalProject/Cluster_setup/Common_steps.sh && sudo bash /home/ubuntu/LOG8415_FinalProject/Cluster_setup/Slave_setup.sh")
+    print('stdout:', stdout.read())
+    print('stderr:', stderr.read())
+
+sessions['mysql_cluster_master'].exec_command("cd /opt/mysqlcluster/home/mysqlc && sudo scripts/mysql_install_db --no-defaults --datadir=/opt/mysqlcluster/deploy/mysqld_data && sudo /opt/mysqlcluster/home/mysqlc/bin/mysqld --defaults-file=/opt/mysqlcluster/deploy/conf/my.cnf --user=root &")
+
+'''
+for instance in instances[2:]:
+    stdin, stdout, stderr =sessions[instance].exec_command("mkdir test")
     print('stdout:', stdout.read())
     print('stderr:', stderr.read())
 

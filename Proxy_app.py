@@ -1,26 +1,13 @@
-import mysql.connector
-import sys
-import boto3
-import os
+from Infrastructure_setup import sessions
 
-ENDPOINT="ec2-100-26-195-115.compute-1.amazonaws.com"
-PORT="33060"
-USER="ubuntu"
-REGION="us-east-1"
-DBNAME="sakila"
-os.environ['LIBMYSQL_ENABLE_CLEARTEXT_PLUGIN'] = '1'
+instances= ['mysql_cluster_master','mysql_cluster_slave1','mysql_cluster_slave2','mysql_cluster_slave3']
+List_of_requests =['CREATE DATABASE test1;','CREATE DATABASE test2;','create databse test3;','create databse test4;']
 
-#gets the credentials from .aws/credentials
-session = boto3.Session(profile_name='default')
-client = session.client('rds')
+cmd = " sudo echo '" + str(List_of_requests[1]) + "' >> requests.sql"
+sessions['mysql_cluster_master'].exec_command('touch requests')
 
-token = client.generate_db_auth_token(DBHostname=ENDPOINT, Port=PORT, DBUsername=USER, Region=REGION)
+stdin, stdout, stderr = sessions['mysql_cluster_master'].exec_command(cmd )
+print('stdout:', stdout.read())
+print('stderr:', stderr.read())
 
-try:
-    conn =  mysql.connector.connect(host=ENDPOINT, user=USER, port=PORT, database=DBNAME)
-    cur = conn.cursor()
-    cur.execute("""SELECT now()""")
-    query_results = cur.fetchall()
-    print(query_results)
-except Exception as e:
-    print("Database connection failed due to {}".format(e))  
+sessions['mysql_cluster_master'].exec_command('sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root -p < requests.sql')
