@@ -1,9 +1,12 @@
 from Proxy_sessions_setup import sessions
 
-instances= ['mysql_cluster_master','mysql_cluster_slave1','mysql_cluster_slave2','mysql_cluster_slave3']
-List_of_requests =['CREATE DATABASE test1;','CREATE DATABASE test2;','CREATE DATABASE test3;','CREATE DATABASE test4;']
+Client_request= open('/home/ubuntu/LOG8415_FinalProject/Client_request', "r", encoding='utf-8')
+Client_request= open('/home/ubuntu/LOG8415_FinalProject/Client_request', "w", encoding='utf-8')
 
-cmd = " sudo echo '" + str(List_of_requests[2]) + "' >> requests.sql && sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root < requests.sql"
+instances= ['mysql_cluster_master','mysql_cluster_slave1','mysql_cluster_slave2','mysql_cluster_slave3']
+request =Client_request.readlines()[0].strip('\n')
+
+cmd = " sudo echo '" + str(request) + "' >> requests.sql && sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root < requests.sql"
 sessions['mysql_cluster_master'].exec_command('touch requests.sql')
 
 stdin, stdout, stderr = sessions['mysql_cluster_master'].exec_command(cmd )
