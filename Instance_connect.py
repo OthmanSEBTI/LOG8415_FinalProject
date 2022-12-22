@@ -2,7 +2,7 @@ import boto3
 import paramiko
 
 def retrieve_intanceId(instanceName):
-    ec2_resource = boto3.resource('ec2')
+    ec2_resource = boto3.resource('ec2', region_name="us-east-1")
 
     instances= ec2_resource.instances.all()
 
@@ -14,7 +14,7 @@ def retrieve_intanceId(instanceName):
     return(instanceId)
 
 def retrieve_publicIp(instanceId):
-    ec2_client = boto3.client('ec2')
+    ec2_client = boto3.client('ec2', region_name="us-east-1")
     reservations = ec2_client.describe_instances(InstanceIds=[
             instanceId,
         ])

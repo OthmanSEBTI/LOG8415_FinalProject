@@ -3,7 +3,8 @@ key_name = 'key'
 
 # start ssh seessions
 sessions={}
-instances= ['mysql_standalone','mysql_cluster_master','mysql_cluster_slave1','mysql_cluster_slave2','mysql_cluster_slave3']
+instances= ['mysql_standalone','mysql_cluster_master','mysql_cluster_slave1','mysql_cluster_slave2','mysql_cluster_slave3', 'Proxy']
+
 
 
 for instance in instances :
