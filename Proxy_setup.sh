@@ -9,14 +9,12 @@ sudo apt install python3-pip -y
 sudo pip install boto3
 sudo pip install paramiko
 
-sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git
-
 # set credantials
 sudo mkdir  /home/ubuntu/.aws
 
 echo | cat /home/ubuntu/LOG8415_FinalProject/credentials | sudo tee -a /home/ubuntu/.aws/credentials
 echo | cat /home/ubuntu/LOG8415_FinalProject/config | sudo tee -a /home/ubuntu/.aws/config
 
-python3 ./LOG8415_FinalProject/Proxy_sessions_setup.py
+
 
 
