@@ -84,8 +84,12 @@ Client_request= open('./Client_request', "w", encoding='utf-8')
 while(True):
     var = str(input("Please enter request : "))
     Client_request.writelines(var + '\n')
+    stdin, stdout, stderr =sessions['Proxy'].exec_command("python3 /home/ubuntu/LOG8415_FinalProject/Proxy_app.py")
+    print('stdout:', stdout.read())
+    print('stderr:', stderr.read())
 
- 
+
+
 '''
 stdin, stdout, stderr =sessions['Proxy'].exec_command("echo | cat /home/ubuntu/LOG8415_FinalProject/config | sudo tee -a /home/ubuntu/.aws/config")
 print('stdout:', stdout.read())
