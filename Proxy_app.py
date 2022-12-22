@@ -1,4 +1,4 @@
-from Sessions_setup import sessions
+from Proxy_sessions_setup import sessions
 
 instances= ['mysql_cluster_master','mysql_cluster_slave1','mysql_cluster_slave2','mysql_cluster_slave3']
 List_of_requests =['CREATE DATABASE test1;','CREATE DATABASE test2;','CREATE DATABASE test3;','CREATE DATABASE test4;']

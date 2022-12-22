@@ -1,5 +1,5 @@
 from Instance_connect import *
-key_name = '/home/ubuntu/LOG8415_FinalProject/key'
+key_name = '/home/ubuntu/LOG8415_FinalProject/key.pem'
 
 # start ssh seessions
 sessions={}
@@ -10,4 +10,4 @@ instances= ['mysql_standalone','mysql_cluster_master','mysql_cluster_slave1','my
 for instance in instances :
     instanceId = retrieve_intanceId(instance)
     publicIp = retrieve_publicIp(instanceId)
-    sessions[instance] = ssh_to_instance(key_name+'.pem',publicIp)
+    sessions[instance] = ssh_to_instance(key_name,publicIp)
