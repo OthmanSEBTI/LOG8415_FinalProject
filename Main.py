@@ -39,10 +39,16 @@ stdin, stdout, stderr =sessions['mysql_cluster_master'].exec_command("cd /opt/my
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 
-'''
+
 stdin, stdout, stderr =sessions['mysql_cluster_master'].exec_command("/opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root < /home/ubuntu/LOG8415_FinalProject/Cluster_setup/mysql_user.sql")
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 
+'''
+#install sysbench in the cluster instances
+for instance in instances[2:]:
+    stdin, stdout, stderr =sessions[instance].exec_command("sudo apt-get install sysbench -y")
+    print('stdout:', stdout.read())
+    print('stderr:', stderr.read())
 
 
