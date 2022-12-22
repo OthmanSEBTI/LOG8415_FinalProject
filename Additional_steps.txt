@@ -13,7 +13,7 @@ sudo tar xvf /home/ubuntu/sakila-db.tar.gz
 SOURCE /home/ubuntu/sakila-db/sakila-schema.sql;
 SOURCE /home/ubuntu/sakila-db/sakila-data.sql;
 
-sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=127.0.0.1 --mysql-user=root --mysql-db=sakila --table-size=1000000 --max-requests=1000000  prepare
-sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=127.0.0.1 --mysql-user=root --mysql-db=sakila --table-size=1000000 --max-requests=1000000  run
+sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=127.0.0.1 --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  prepare
+sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=127.0.0.1 --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  run
 
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h ec2-18-234-103-147.compute-1.amazonaws.com -u myapp -p
