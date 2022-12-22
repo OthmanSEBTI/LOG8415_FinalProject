@@ -2,14 +2,14 @@ cd /opt/mysqlcluster/home/mysqlc
 sudo scripts/mysql_install_db --no-defaults --datadir=/opt/mysqlcluster/deploy/mysqld_data
 sudo /opt/mysqlcluster/home/mysqlc/bin/mysqld --defaults-file=/opt/mysqlcluster/deploy/conf/my.cnf --user=root &
 /opt/mysqlcluster/home/mysqlc/bin/mysql_secure_installation
-/opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root -p
-CREATE USER 'myapp'@'%' IDENTIFIED BY 'testpwd';
-GRANT ALL PRIVILEGES ON * . * TO 'myapp'@'%' IDENTIFIED BY 'testpwd';
+/opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root
+CREATE USER 'myapp'@'%';
+GRANT ALL PRIVILEGES ON * . * TO 'myapp'@'%';
 sudo apt-get install sysbench -y
 cp /home/ubuntu/LOG8415_FinalProject/sakila-db.tar.gz /home/ubuntu/
 sudo tar xvf /home/ubuntu/sakila-db.tar.gz
 
-/opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root -p
+/opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root
 SOURCE /home/ubuntu/sakila-db/sakila-schema.sql;
 SOURCE /home/ubuntu/sakila-db/sakila-data.sql;
 
