@@ -71,10 +71,10 @@ print('stderr:', stderr.read())
 '''
 
 # Proxy setup and launch
-sessions['Proxy'].exec_command("sudo apt-get update & sudo rm -r LOG8415_FinalProject")
+sessions['Proxy'].exec_command("sudo apt-get update")
 stdin, stdout, stderr =sessions['Proxy'].exec_command("sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git && sudo bash /home/ubuntu/LOG8415_FinalProject/Proxy_setup.sh ")
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
-stdin, stdout, stderr =sessions['Proxy'].exec_command("python3 ./LOG8415_FinalProject/Proxy_app.py")
+stdin, stdout, stderr =sessions['Proxy'].exec_command("python3 ./LOG8415_FinalProject/Proxy_sessions_setup.py & python3 ./LOG8415_FinalProject/Proxy_app.py")
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
