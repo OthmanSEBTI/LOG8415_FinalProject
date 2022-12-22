@@ -17,6 +17,6 @@ sudo mkdir  /home/ubuntu/.aws
 echo | cat /home/ubuntu/LOG8415_FinalProject/credentials | sudo tee -a /home/ubuntu/.aws/credentials
 echo | cat /home/ubuntu/LOG8415_FinalProject/config | sudo tee -a /home/ubuntu/.aws/config
 
-python3 ./LOG8415_FinalProject/Sessions_setup.py
+python3 ./LOG8415_FinalProject/Proxy_sessions_setup.py
 
 
