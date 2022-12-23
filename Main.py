@@ -45,14 +45,14 @@ stdin, stdout, stderr =sessions['mysql_cluster_master'].exec_command("/opt/mysql
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 
-print(0000000000)
+
 #install sysbench in the cluster instances
 for instance in instances[1:]:
     stdin, stdout, stderr =sessions[instance].exec_command("sudo apt-get install sysbench -y")
     print('stdout:', stdout.read())
     print('stderr:', stderr.read())
 
-print(1111111111)
+
 
 #install sakila db in the master
 stdin, stdout, stderr =sessions['mysql_cluster_master'].exec_command("cp /home/ubuntu/LOG8415_FinalProject/sakila-db.tar.gz /home/ubuntu/ & sudo tar xvf /home/ubuntu/sakila-db.tar.gz")
@@ -63,13 +63,13 @@ stdin, stdout, stderr =sessions['mysql_cluster_master'].exec_command("/opt/mysql
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 
-print(2222222222222)
+
 #Launch Benchmark
-stdin, stdout, stderr =sessions['mysql_cluster_slave1'].exec_command("sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-44-203-48-52.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  prepare & time sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-44-203-48-52.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  run")
+stdin, stdout, stderr =sessions['mysql_cluster_slave1'].exec_command("sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-107-23-59-220.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  prepare & time sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-107-23-59-220.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  run")
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 
-print(3333333)
+
 '''
 # Proxy setup and launch
 sessions['Proxy'].exec_command("sudo apt-get update")
