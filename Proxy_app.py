@@ -1,7 +1,7 @@
 from Proxy_sessions_setup import sessions
 
 Client_request= open('/home/ubuntu/LOG8415_FinalProject/Client_request', "r", encoding='utf-8')
-Client_request= open('/home/ubuntu/LOG8415_FinalProject/Client_request', "w", encoding='utf-8')
+
 
 request =Client_request.readlines()[0].strip('\n')
 
