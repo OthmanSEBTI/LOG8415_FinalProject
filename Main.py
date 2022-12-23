@@ -78,13 +78,13 @@ print('stderr:', stderr.read())
 
 #Launch Benchmark
 
-stdin, stdout, stderr =sessions['mysql_cluster_slave1'].exec_command("sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-35-171-157-158.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  prepare")
+stdin, stdout, stderr =sessions['mysql_cluster_slave1'].exec_command("sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-3-85-221-220.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  prepare")
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 
 time.sleep(30)
 
-stdin, stdout, stderr = sessions['mysql_cluster_slave1'].exec_command("time sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-35-171-157-158.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  run")
+stdin, stdout, stderr = sessions['mysql_cluster_slave1'].exec_command("time sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-3-85-221-220.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  run")
 
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
@@ -104,6 +104,7 @@ print('stderr:', stderr.read())
 '''
 
 
+
 while(True):
     var = str(input("Please enter request : "))
 
@@ -111,7 +112,7 @@ while(True):
     print('stdout:', stdout.read())
     print('stderr:', stderr.read())
     
-    stdin, stdout, stderr =sessions['Proxy'].exec_command("python3 /home/ubuntu/LOG8415_FinalProject/Proxy_app.py")
+    stdin, stdout, stderr =sessions['Proxy'].exec_command("python3 /home/ubuntu/LOG8415_FinalProject/Proxy_app_random.py")
     print('stdout:', stdout.read())
     print('stderr:', stderr.read())
 
