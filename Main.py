@@ -1,7 +1,9 @@
 import boto3
 import os
+import time
 
 from Sessions_setup import sessions
+from Sessions_setup import Master_second_session
 
 instances= ['mysql_standalone','mysql_cluster_master','mysql_cluster_slave1','mysql_cluster_slave2','mysql_cluster_slave3']
 
@@ -34,18 +36,23 @@ for instance in instances[2:]:
     print('stdout:', stdout.read())
     print('stderr:', stderr.read())
 
-'''
+
 
 # back to mysql master node
-stdin, stdout, stderr =sessions['mysql_cluster_master'].exec_command("cd /opt/mysqlcluster/home/mysqlc && sudo scripts/mysql_install_db --no-defaults --datadir=/opt/mysqlcluster/deploy/mysqld_data && sudo /opt/mysqlcluster/home/mysqlc/bin/mysqld --defaults-file=/opt/mysqlcluster/deploy/conf/my.cnf --user=root &")
+stdin, stdout, stderr =sessions['mysql_cluster_master'].exec_command("cd /opt/mysqlcluster/home/mysqlc && sudo scripts/mysql_install_db --no-defaults --datadir=/opt/mysqlcluster/deploy/mysqld_data")
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 
+Master_second_session.exec_command("sudo /opt/mysqlcluster/home/mysqlc/bin/mysqld --defaults-file=/opt/mysqlcluster/deploy/conf/my.cnf --user=root &")
+
+time.sleep(30)
 
 stdin, stdout, stderr =sessions['mysql_cluster_master'].exec_command("/opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root < /home/ubuntu/LOG8415_FinalProject/Cluster_setup/mysql_user.sql")
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 
+
+'''
 
 
 #install sysbench in the cluster instances
@@ -53,6 +60,7 @@ for instance in instances[1:]:
     stdin, stdout, stderr =sessions[instance].exec_command("sudo apt-get install sysbench -y")
     print('stdout:', stdout.read())
     print('stderr:', stderr.read())
+
 
 
 
@@ -66,8 +74,9 @@ print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 
 
+
 #Launch Benchmark
-stdin, stdout, stderr =sessions['mysql_cluster_slave1'].exec_command("sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-54-211-94-227.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  prepare & time sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-54-211-94-227.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  run")
+stdin, stdout, stderr =sessions['mysql_cluster_slave1'].exec_command("sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-44-204-20-208.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  prepare & time sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-44-204-20-208.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  run")
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 
