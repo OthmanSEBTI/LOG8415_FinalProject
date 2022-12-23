@@ -4,10 +4,10 @@ from ping3 import ping
 import time
 
 instances= ['mysql_cluster_master','mysql_cluster_slave1','mysql_cluster_slave2','mysql_cluster_slave3']
-ip_adresses = {'mysql_cluster_master':'ec2-35-174-156-89.compute-1.amazonaws.com', 
-'mysql_cluster_slave1':'ec2-18-205-156-71.compute-1.amazonaws.com', 
-'mysql_cluster_slave2':'ec2-44-201-219-14.compute-1.amazonaws.com',
-'mysql_cluster_slave3':'ec2-54-211-1-222.compute-1.amazonaws.com'}
+ip_adresses = {'mysql_cluster_master':'ec2-54-210-201-233.compute-1.amazonaws.com', 
+'mysql_cluster_slave1':'ec2-44-206-228-96.compute-1.amazonaws.com', 
+'mysql_cluster_slave2':'ec2-54-173-199-68.compute-1.amazonaws.com',
+'mysql_cluster_slave3':'ec2-3-86-253-19.compute-1.amazonaws.com'}
 
 ping_time={}
 

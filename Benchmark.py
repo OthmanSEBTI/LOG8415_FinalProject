@@ -23,7 +23,7 @@ end = time.time()
 Standalone_exec_time = end - start 
 
 #Launch Sysbench Benchmark on Cluster
-stdin, stdout, stderr =sessions['mysql_cluster_slave1'].exec_command("sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-35-174-156-89.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  prepare")
+stdin, stdout, stderr =sessions['mysql_cluster_slave1'].exec_command("sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-54-210-201-233.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  prepare")
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 
@@ -31,7 +31,7 @@ time.sleep(30)
 
 start = time.time()
 
-stdin, stdout, stderr = sessions['mysql_cluster_slave1'].exec_command("time sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-35-174-156-89.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  run")
+stdin, stdout, stderr = sessions['mysql_cluster_slave1'].exec_command("time sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-54-210-201-233.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  run")
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 

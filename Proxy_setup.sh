@@ -8,6 +8,7 @@ sudo apt install python3.9 -y
 sudo apt install python3-pip -y
 sudo pip install boto3
 sudo pip install paramiko
+sudo pip install ping3
 
 # set credantials
 sudo mkdir  /home/ubuntu/.aws
