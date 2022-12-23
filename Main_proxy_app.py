@@ -34,3 +34,17 @@ elif Proxy_mode=="random" :
         print('stderr:', stderr.read())
 
         sessions['Proxy'].exec_command("sudo rm request.sql")
+
+elif Proxy_mode=="customize" :
+    while(True):
+        var = str(input("Please enter request : "))
+
+        stdin, stdout, stderr =sessions['Proxy'].exec_command('sudo echo ' + "'" + str(var) + "'" + ' >> /home/ubuntu/request.sql')
+        print('stdout:', stdout.read())
+        print('stderr:', stderr.read())
+        
+        stdin, stdout, stderr =sessions['Proxy'].exec_command("sudo python3 /home/ubuntu/LOG8415_FinalProject/Proxy_app_customize.py")
+        print('stdout:', stdout.read())
+        print('stderr:', stderr.read())
+
+        sessions['Proxy'].exec_command("sudo rm request.sql")
