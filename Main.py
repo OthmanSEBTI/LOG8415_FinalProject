@@ -22,7 +22,7 @@ print('stderr:', stderr.read())
 # stdin, stdout, stderr =sessions['mysql_standalone1'].exec_command("sudo sysbench oltp_read_write --table-size=1000000 --mysql-db=sakila --mysql-user=root prepare && sudo sysbench oltp_read_write --table-size=1000000 --threads=6 --time=60 --max-requests=0 --mysql-db=sakila --mysql-user=root run")
 
 '''
-
+'''
 # setup mysql master node
 sessions['mysql_cluster_master'].exec_command("sudo apt-get update")
 stdin, stdout, stderr =sessions['mysql_cluster_master'].exec_command("sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git && sudo bash /home/ubuntu/LOG8415_FinalProject/Cluster_setup/Common_steps.sh && sudo bash /home/ubuntu/LOG8415_FinalProject/Cluster_setup/Master_setup.sh")
@@ -90,31 +90,38 @@ print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 
 '''
+
+'''
 # Proxy setup and launch
 sessions['Proxy'].exec_command("sudo apt-get update")
 stdin, stdout, stderr =sessions['Proxy'].exec_command("sudo git clone https://github.com/OthmanSEBTI/LOG8415_FinalProject.git && sudo bash /home/ubuntu/LOG8415_FinalProject/Proxy_setup.sh ")
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
-stdin, stdout, stderr =sessions['Proxy'].exec_command("python3 /home/ubuntu/LOG8415_FinalProject/Proxy_sessions_setup.py & python3 /home/ubuntu/LOG8415_FinalProject/Proxy_app.py")
+stdin, stdout, stderr =sessions['Proxy'].exec_command("python3 /home/ubuntu/LOG8415_FinalProject/Proxy_sessions_setup.py ")
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 
 '''
-'''
-Client_request= open('./Client_request', "w", encoding='utf-8')
+
+
+
 while(True):
     var = str(input("Please enter request : "))
+
+    stdin, stdout, stderr =sessions['Proxy'].exec_command('sudo echo ' + "'" + str(var) + "'" + ' >> /home/ubuntu/request.sql')
+    print('stdout:', stdout.read())
+    print('stderr:', stderr.read())
     
-    echo | cat /home/ubuntu/LOG8415_FinalProject/config | sudo tee -a /home/ubuntu/.aws/config
+    stdin, stdout, stderr =sessions['Proxy'].exec_command("python3 /home/ubuntu/LOG8415_FinalProject/Proxy_app.py")
+    print('stdout:', stdout.read())
+    print('stderr:', stderr.read())
+    
+
+    ''' 
     stdin, stdout, stderr =sessions['Proxy'].exec_command("python3 /home/ubuntu/LOG8415_FinalProject/Proxy_app.py")
     print('stdout:', stdout.read())
     print('stderr:', stderr.read())
 
-'''
+    '''
 
-'''
-stdin, stdout, stderr =sessions['Proxy'].exec_command("echo | cat /home/ubuntu/LOG8415_FinalProject/config | sudo tee -a /home/ubuntu/.aws/config")
-print('stdout:', stdout.read())
-print('stderr:', stderr.read())
-'''
 
