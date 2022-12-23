@@ -67,7 +67,7 @@ print('stderr:', stderr.read())
 
 
 #Launch Benchmark
-stdin, stdout, stderr =sessions['mysql_cluster_slave1'].exec_command("sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-54-211-138-129.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  prepare & time sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-54-211-138-129.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  run")
+stdin, stdout, stderr =sessions['mysql_cluster_slave1'].exec_command("sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-54-211-94-227.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  prepare & time sudo sysbench  oltp_read_write --num-threads=16 --max-requests=10000 --db-driver=mysql --mysql-host=ec2-54-211-94-227.compute-1.amazonaws.com --mysql-user=myapp2 --mysql-db=sakila --table-size=1000000 --max-requests=1000000  run")
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 

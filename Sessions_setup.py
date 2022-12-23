@@ -11,3 +11,7 @@ for instance in instances :
     instanceId = retrieve_intanceId(instance)
     publicIp = retrieve_publicIp(instanceId)
     sessions[instance] = ssh_to_instance(key_name+'.pem',publicIp)
+
+instanceId = retrieve_intanceId('mysql_cluster_master')
+publicIp = retrieve_publicIp('mysql_cluster_master')
+Master_second_session=ssh_to_instance(key_name+'.pem',publicIp)
