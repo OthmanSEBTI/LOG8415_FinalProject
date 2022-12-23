@@ -10,7 +10,7 @@ key_name = 'key'
 key_pair(key_name)
 
 # create a security group
-securityGroupId = security_group('security_group1')
+securityGroupId = security_group('security_group')
 
 # create needed instances of type t2.micro
 instances= ['mysql_standalone','mysql_cluster_master','mysql_cluster_slave1','mysql_cluster_slave2','mysql_cluster_slave3','Proxy']
