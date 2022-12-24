@@ -1,5 +1,6 @@
 import boto3
 
+# creating security groups with necessary rules
 def security_group(securityGroupName):
         
         ec2_client = boto3.client('ec2', region_name="us-east-1")

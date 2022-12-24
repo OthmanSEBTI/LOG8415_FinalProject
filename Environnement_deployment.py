@@ -1,7 +1,6 @@
 import boto3
 import os
 import time
-
 from Sessions_setup import sessions
 from Sessions_setup import Master_second_session
 
@@ -43,19 +42,11 @@ stdin, stdout, stderr =sessions['mysql_cluster_master'].exec_command("/opt/mysql
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
 
-
-
-
-
-
 #install sysbench in the cluster instances
 for instance in instances[1:]:
     stdin, stdout, stderr =sessions[instance].exec_command("sudo apt-get install sysbench -y")
     print('stdout:', stdout.read())
     print('stderr:', stderr.read())
-
-
-
 
 #install sakila db in the master
 stdin, stdout, stderr =sessions['mysql_cluster_master'].exec_command("cp /home/ubuntu/LOG8415_FinalProject/sakila-db.tar.gz /home/ubuntu/ & sudo tar xvf /home/ubuntu/sakila-db.tar.gz")
@@ -65,9 +56,6 @@ print('stderr:', stderr.read())
 stdin, stdout, stderr =sessions['mysql_cluster_master'].exec_command("/opt/mysqlcluster/home/mysqlc/bin/mysql -h 127.0.0.1 -u root < /home/ubuntu/LOG8415_FinalProject/Cluster_setup/Install_sakila.sql")
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())
-
-
-
 
 # Proxy setup and launch
 sessions['Proxy'].exec_command("sudo apt-get update")

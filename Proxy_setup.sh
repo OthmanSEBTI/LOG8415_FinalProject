@@ -1,5 +1,6 @@
 #! /usr/bin/bash
 
+# requirements for proxy environement
 sudo apt-get update
 sudo apt install software-properties-common
 sudo add-apt-repository ppa:deadsnakes/ppa

@@ -22,13 +22,22 @@ steps to run in the order:
 
 1. copy the aws credentials and config to 'LOG8415_FinalProject/credentials' and 'LOG8415_FinalProject/config'
 2. execute Infrastructure_setup.py to create key pair, security group, and instances
-3. copy the private DNS name of the private ip for the cluster instances in 'LOG8415_FinalProject/Cluster_setup/config_content' (all adresses)
-4. copy the private DNS name of the public ip for the cluster instances in the following files: 'LOG8415_FinalProject/Cluster_setup/Slave_setup.sh' Line 2 (only the master adress)
+3. copy the DNS name of the private ip for the cluster instances in 'LOG8415_FinalProject/Cluster_setup/config_content' (all instances adresses)
+4. copy the DNS name of the public ip for the cluster instances in the following files: 'LOG8415_FinalProject/Cluster_setup/Slave_setup.sh' Line 2 (only the master adress)
    'LOG8415_FinalProject/Benchmark.py' Line 26 and Line 34 (only the master adress)
    'LOG8415_FinalProject/Proxy_app_random.py' Line 13 (only the master adress)
-   'LOG8415_FinalProject/Proxy_app_customize.py' Line 7 to 10 (all adresses)
+   'LOG8415_FinalProject/Proxy_app_customize.py' Line 7 to 10 (all instances adresses)
 5. push the modifications in the git repo
 6. execute Sessions_setup.py to establish ssh sessions
 7. execute Environnement_deployment.py for setting the standalone mysql and the cluster and the proxy with all the installations and necessary steps
 8. run Benchmark.py to launch the benchmark on the cluster and standalone
 9. run Main_proxy_app.py for launching the proxy application
+
+# Instructions for reexuction
+
+1. all the infrastructure should be deleted:
+   terminate instances (and better to change their names in order to don't confuse the ssh connection) in aws
+   delete key
+   delete security_group
+   delete 'LOG8415_FinalProject/key.pem'
+2. reproceed (# Instructions to run the code) from line 2
