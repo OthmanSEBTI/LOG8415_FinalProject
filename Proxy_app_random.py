@@ -11,7 +11,7 @@ instances= ['mysql_cluster_slave1','mysql_cluster_slave2','mysql_cluster_slave3'
 random_slave=random.choice(instances)
 
 # forward the request to the selected slave
-cmd = " sudo echo '" + str(request) + "' >> requests.sql && sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h ec2-54-210-201-233.compute-1.amazonaws.com -u myapp2 < requests.sql"
+cmd = " sudo echo '" + str(request) + "' >> requests.sql && sudo /opt/mysqlcluster/home/mysqlc/bin/mysql -h ec2-54-85-81-113.compute-1.amazonaws.com -u myapp2 < requests.sql"
 stdin, stdout, stderr = sessions[random_slave].exec_command(cmd )
 print('stdout:', stdout.read())
 print('stderr:', stderr.read())

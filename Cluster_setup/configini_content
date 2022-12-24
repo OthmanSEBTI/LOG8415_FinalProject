@@ -1,5 +1,5 @@
 [ndb_mgmd]
-hostname=ip-172-31-93-209.ec2.internal
+hostname=ip-172-31-92-72.ec2.internal
 datadir=/opt/mysqlcluster/deploy/ndb_data
 nodeid=1
 
@@ -8,17 +8,17 @@ noofreplicas=3
 datadir=/opt/mysqlcluster/deploy/ndb_data
 
 [ndbd]
-hostname=ip-172-31-84-134.ec2.internal
+hostname=ip-172-31-85-112.ec2.internal
 datadir=/opt/mysqlcluster/deploy/ndb_data
 nodeid=3
 
 [ndbd]
-hostname=ip-172-31-95-68.ec2.internal
+hostname=ip-172-31-88-166.ec2.internal
 datadir=/opt/mysqlcluster/deploy/ndb_data
 nodeid=4
 
 [ndbd]
-hostname=ip-172-31-87-63.ec2.internal
+hostname=ip-172-31-86-179.ec2.internal
 datadir=/opt/mysqlcluster/deploy/ndb_data
 nodeid=5
 

@@ -4,10 +4,10 @@ from ping3 import ping
 import time
 
 instances= ['mysql_cluster_master','mysql_cluster_slave1','mysql_cluster_slave2','mysql_cluster_slave3']
-ip_adresses = {'mysql_cluster_master':'ec2-54-210-201-233.compute-1.amazonaws.com', 
-'mysql_cluster_slave1':'ec2-44-206-228-96.compute-1.amazonaws.com', 
-'mysql_cluster_slave2':'ec2-54-173-199-68.compute-1.amazonaws.com',
-'mysql_cluster_slave3':'ec2-3-86-253-19.compute-1.amazonaws.com'}
+ip_adresses = {'mysql_cluster_master':'ec2-54-85-81-113.compute-1.amazonaws.com', 
+'mysql_cluster_slave1':'ec2-52-90-82-162.compute-1.amazonaws.com', 
+'mysql_cluster_slave2':'ec2-54-82-46-233.compute-1.amazonaws.com',
+'mysql_cluster_slave3':'ec2-3-87-26-61.compute-1.amazonaws.com'}
 
 # find the slave instance with the minimum ping time
 ping_time={}
